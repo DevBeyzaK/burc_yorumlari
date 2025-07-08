@@ -7,6 +7,20 @@ class BurcDetay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("${secilenBurc.burcAdi} Burcu"),
+        foregroundColor: Colors.white,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text(secilenBurc.burcAdi),
+            Text(secilenBurc.burcTarih),
+            Text(secilenBurc.burcDetay),
+          ],
+        ),
+      ),
+    );
   }
 }
