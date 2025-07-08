@@ -48,7 +48,8 @@ class _BurcListesiState extends State<BurcListesi> {
         burcTarih: Strings.BURC_TARIHLERI[i],
         burcDetay: Strings.BURC_GENEL_OZELLIKLERI[i],
         burcKucukResim: ("${Strings.BURC_ADLARI[i]}${i + 1}.png").toLowerCase(),
-        burcBuyukResim: ("${Strings.BURC_ADLARI[i]}_buyuk${i + 1}.png"),
+        burcBuyukResim: ("${Strings.BURC_ADLARI[i]}_buyuk${i + 1}.png")
+            .toLowerCase(),
       );
       gecici.add(eklenecekBurc);
     }
