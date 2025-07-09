@@ -12,9 +12,25 @@ class BurcDetay extends StatefulWidget {
 }
 
 class _BurcDetayState extends State<BurcDetay> {
-  Color appBarRengi = Colors.pink;
+  Color appBarRengi = Colors.transparent; //bunu kaydırırken silverappbarda eski pink rengi hafif gözükmesin diye yaptık
 
   late PaletteGenerator _generator;
+  @override
+  void initState() {
+    super.initState();
+    appBarRenginiBul();
+  }
+
+  void appBarRenginiBul() async {
+    _generator = await PaletteGenerator.fromImageProvider(//burdaki baskın renk resimdeki neyse appbar renginin o olmasını sağladık import 'package:palette_generator/palette_generator.dart'; bu kütüphaneyi ekledik.
+      AssetImage("images/${widget.secilenBurc.burcBuyukResim}"),
+    );
+
+    setState(() {
+      appBarRengi = _generator.vibrantColor!.color; //dominantColor! resimdeki baskın rengi seçer, vibrantColor ise ana rengi alır.  
+    });
+    print(appBarRengi);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +38,7 @@ class _BurcDetayState extends State<BurcDetay> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            backgroundColor: appBarRengi,
             expandedHeight: 250,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
